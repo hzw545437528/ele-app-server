@@ -40,4 +40,10 @@ router.post('/login', jsonParser, (req, resp) => {
     }
 })
 
+router.get('/getShopType', (req, resp) => {
+    server.getShopType().then((res) => {
+        resp.send(res)
+    })
+})
+
 module.exports = router
