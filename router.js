@@ -46,4 +46,12 @@ router.get('/getShopType', (req, resp) => {
     })
 })
 
+router.get('/getShops', (req, resp) => {
+    console.log(req.query);
+    let data = req.query
+    server.getShops(JSON.parse(data.type), parseFloat(data.page)).then(res => {
+        resp.send(res)
+    })
+})
+
 module.exports = router

@@ -14,4 +14,8 @@ server.getShopType = function (type = {}) {
     return shopService.getShopType(type)
 }
 
+server.getShops = function (type, page) {
+    return shopService.getShops(type, page)
+}
+
 module.exports = server
