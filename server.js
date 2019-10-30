@@ -1,9 +1,11 @@
 const verifyCode = require('./util/verifyCode')
 const ShopService = require('./service/shopService')
+const OrderService = require('./service/orderService')
 
 let server = {};
 
 shopService = new ShopService();
+orderService = new OrderService();
 
 server.getVerifyCode = function () {
     let code = verifyCode()
@@ -24,6 +26,9 @@ server.getShopImage = function (path) {
 
 server.getProvideIntroduce = function (name) {
     return shopService.getProvideIntroduce(name)
+}
+server.getOrders = function () {
+    return orderService.getOrders()
 }
 
 module.exports = server

@@ -74,4 +74,11 @@ router.get('/getProvideIntroduce', (req, resp) => {
     })
 })
 
+router.get('/getOrders', (req, resp) => {
+    server.getOrders().then(res => {
+
+        resp.send(res)
+    })
+})
+
 module.exports = router
