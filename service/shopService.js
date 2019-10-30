@@ -13,6 +13,12 @@ var shopService = /** @class */ (function () {
         if (page === void 0) { page = 0; }
         return shop_dao.getShops(type, page);
     };
+    shopService.prototype.getShopImage = function (path) {
+        return shop_dao.getShopImage(path);
+    };
+    shopService.prototype.getProvideIntroduce = function (name) {
+        return shopDao.getProvideIntroduce(name);
+    };
     return shopService;
 }());
 module.exports = shopService;

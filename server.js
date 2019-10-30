@@ -18,4 +18,12 @@ server.getShops = function (type, page) {
     return shopService.getShops(type, page)
 }
 
+server.getShopImage = function (path) {
+    return shopService.getShopImage(path)
+}
+
+server.getProvideIntroduce = function (name) {
+    return shopService.getProvideIntroduce(name)
+}
+
 module.exports = server

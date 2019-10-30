@@ -47,9 +47,29 @@ router.get('/getShopType', (req, resp) => {
 })
 
 router.get('/getShops', (req, resp) => {
-    console.log(req.query);
+    // console.log(req.query);
     let data = req.query
     server.getShops(JSON.parse(data.type), parseFloat(data.page)).then(res => {
+        resp.send(res)
+    })
+})
+
+router.get('/getShopImage', (req, resp) => {
+    let path = req.query.path;
+
+    server.getShopImage(path).then(res => {
+        // resp.writeHead(200, {
+        //     'Content-Type': 'image/png'
+        // });
+        resp.send(res)
+    }).catch(err => {
+        resp.send("请求错误")
+    })
+})
+
+router.get('/getProvideIntroduce', (req, resp) => {
+    let name = requ.query.name;
+    server.getProvideIntroduce(name).then(res => {
         resp.send(res)
     })
 })
