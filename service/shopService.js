@@ -19,6 +19,9 @@ var shopService = /** @class */ (function () {
     shopService.prototype.getProvideIntroduce = function (name) {
         return shopDao.getProvideIntroduce(name);
     };
+    shopService.prototype.getShopByName = function (shopName) {
+        return shop_dao.getShopByName(shopName);
+    };
     return shopService;
 }());
 module.exports = shopService;

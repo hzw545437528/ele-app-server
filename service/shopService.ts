@@ -5,6 +5,7 @@ interface shopImp {
     getShops(type?: Object, page?: Number): any;
     getShopImage(path: String): any;
     getProvideIntroduce(name: String): any;
+    getShopByName(shopName:String):any;
 }
 
 const shop_dao = new shopDao()
@@ -21,6 +22,9 @@ class shopService implements shopImp {
     }
     getProvideIntroduce(name: String) {
         return shopDao.getProvideIntroduce(name)
+    }
+    getShopByName(shopName:String) {
+        return shop_dao.getShopByName(shopName)
     }
 }
 

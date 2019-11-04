@@ -7,6 +7,9 @@ var orderService = /** @class */ (function () {
     orderService.prototype.getOrders = function () {
         return order_dao.getOrders();
     };
+    orderService.prototype.getOrderById = function (orderId) {
+        return order_dao.getOrderById(orderId);
+    };
     return orderService;
 }());
 module.exports = orderService;

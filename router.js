@@ -76,9 +76,23 @@ router.get('/getProvideIntroduce', (req, resp) => {
 
 router.get('/getOrders', (req, resp) => {
     server.getOrders().then(res => {
-
         resp.send(res)
     })
+})
+
+router.get('/getOrderById', (req, resp) => {
+    let orderId = req.query.orderId
+    server.getOrderById(orderId).then(res => {
+        resp.send(res);
+    })
+})
+
+router.get('/getShopByName', (req, resp) => {
+    let shopName = req.query.shopName
+    server.getShopByName(shopName).then(res => {
+        resp.send(res)
+    })
+    
 })
 
 module.exports = router

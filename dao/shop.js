@@ -70,6 +70,16 @@ var ShopDao = /** @class */ (function () {
             });
         });
     };
+    ShopDao.prototype.getShopByName = function (shopName) {
+        return new Promise(function (resolve, reject) {
+            shop.find({shop_name:shopName}, function (err, res) {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(res);
+            });
+        });
+    };
     return ShopDao;
 }());
 module.exports = ShopDao;

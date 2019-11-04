@@ -30,5 +30,11 @@ server.getProvideIntroduce = function (name) {
 server.getOrders = function () {
     return orderService.getOrders()
 }
+server.getShopByName = function (shopName) {
+    return shopService.getShopByName(shopName)
+}
+server.getOrderById = function (orderId) {
+    return orderService.getOrderById(orderId)
+}
 
 module.exports = server

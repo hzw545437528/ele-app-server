@@ -76,6 +76,17 @@ class ShopDao {
             })
         })
     }
+
+    public getShopByName(shopName:String) {
+        return new Promise((resolve, reject) =>{
+            shop.find({ shop_name : shopName },(err:any, res:any) =>{
+                if (err) {
+                    return reject(err)
+                }
+                return resolve(res)
+            })
+        })
+    }
 }
 
 module.exports = ShopDao

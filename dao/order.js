@@ -8,7 +8,22 @@ var ordersSchema = {
     totalnum: Number,
     orderId: String,
     state: String,
-    orderPay: Number
+    orderPay: String,
+    orderState:String,
+    confirmTime:String,
+    partCost:String,
+    newDiscount:String,
+    fullDiscount:String,
+    shopDiscount:String,
+    personDiscount:String,
+    sendWay:String,
+    arriveTime:String,
+    contact:String,
+    contactNumber:String,
+    address:String,
+    invoiceInfo:String,
+    remark:String,
+    shopNumber:String,
 };
 var order = mongoose.model('Order', ordersSchema);
 var OrderDao = /** @class */ (function () {
@@ -22,6 +37,16 @@ var OrderDao = /** @class */ (function () {
                 }
                 return resolve(res);
             }).sort({order_id:-1});
+        });
+    };
+    OrderDao.prototype.getOrderById = function (orderId) {
+        return new Promise(function (resolve, reject) {
+            order.find({order_id:orderId}, function (err, res) {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(res);
+            });
         });
     };
     return OrderDao;
