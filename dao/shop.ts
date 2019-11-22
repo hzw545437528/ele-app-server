@@ -1,6 +1,10 @@
+import { resolve } from "dns"
 
 const mongoose = require('../dbBase/dbConnect.ts')
 const readFile = require('../util/readFile.js')
+const shopSchema = require('../schema/shopSchema')
+
+let objectId = mongoose.Types.ObjectId;
 
 
 let shopTypeSchema = {
@@ -24,9 +28,12 @@ let pIntroduceSchema = {
     introduction: String
 }
 
+let shopInfoSchema = shopSchema.shopInfoSchema
+
 let shop_type = mongoose.model('Shop_type', shopTypeSchema);
 let shop = mongoose.model('Shop', shopsSchema);
 let provideIntroduce = mongoose.model('Provide', pIntroduceSchema);
+let shopInfoModel = mongoose.model('Shop_info', shopInfoSchema);
 
 class ShopDao {
     public getShopType(obj: Object = {}) {
@@ -77,15 +84,23 @@ class ShopDao {
         })
     }
 
-    public getShopByName(shopName:String) {
-        return new Promise((resolve, reject) =>{
-            shop.find({ shop_name : shopName },(err:any, res:any) =>{
+    public getShopByName(shopName: String) {
+        return new Promise((resolve, reject) => {
+            shop.find({ shop_name: shopName }, (err: any, res: any) => {
                 if (err) {
                     return reject(err)
                 }
                 return resolve(res)
             })
         })
+    }
+
+    public getShopInfo(shopId: any) {
+        return shopInfoModel.findOne({ _id: '5dc37440ae033f093888f23d' })
+    }
+
+    public getShopById(id: String) {
+        return shop.findOne({ '_id': id })
     }
 }
 

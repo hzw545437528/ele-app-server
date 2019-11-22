@@ -22,6 +22,12 @@ var shopService = /** @class */ (function () {
     shopService.prototype.getShopByName = function (shopName) {
         return shop_dao.getShopByName(shopName);
     };
+    shopService.prototype.getShopInfo = function (shopId) {
+        return shop_dao.getShopInfo(shopId);
+    };
+    shopService.prototype.getShopById = function (id) {
+        return shop_dao.getShopById(id);
+    };
     return shopService;
 }());
 module.exports = shopService;

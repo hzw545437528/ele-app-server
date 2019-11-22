@@ -1,6 +1,9 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require('../dbBase/dbConnect.ts');
 var readFile = require('../util/readFile.js');
+var shopSchema = require('../schema/shopSchema');
+var objectId = mongoose.Types.ObjectId;
 var shopTypeSchema = {
     type_1: String,
     type_2: String
@@ -19,9 +22,11 @@ var pIntroduceSchema = {
     name: String,
     introduction: String
 };
+var shopInfoSchema = shopSchema.shopInfoSchema;
 var shop_type = mongoose.model('Shop_type', shopTypeSchema);
 var shop = mongoose.model('Shop', shopsSchema);
 var provideIntroduce = mongoose.model('Provide', pIntroduceSchema);
+var shopInfoModel = mongoose.model('Shop_info', shopInfoSchema);
 var ShopDao = /** @class */ (function () {
     function ShopDao() {
     }
@@ -72,13 +77,19 @@ var ShopDao = /** @class */ (function () {
     };
     ShopDao.prototype.getShopByName = function (shopName) {
         return new Promise(function (resolve, reject) {
-            shop.find({shop_name:shopName}, function (err, res) {
+            shop.find({ shop_name: shopName }, function (err, res) {
                 if (err) {
                     return reject(err);
                 }
                 return resolve(res);
             });
         });
+    };
+    ShopDao.prototype.getShopInfo = function (shopId) {
+        return shopInfoModel.findOne({ _id: '5dc37440ae033f093888f23d' });
+    };
+    ShopDao.prototype.getShopById = function (id) {
+        return shop.findOne({ '_id': id });
     };
     return ShopDao;
 }());

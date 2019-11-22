@@ -36,5 +36,13 @@ server.getShopByName = function (shopName) {
 server.getOrderById = function (orderId) {
     return orderService.getOrderById(orderId)
 }
+//获取商家详细信息
+server.getShopInfo = function (shopId) {
+    return shopService.getShopInfo(shopId)
+}
+//根据id获取商家
+server.getShopById = function (id) {
+    return shopService.getShopById(id)
+}
 
 module.exports = server

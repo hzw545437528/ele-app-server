@@ -92,7 +92,24 @@ router.get('/getShopByName', (req, resp) => {
     server.getShopByName(shopName).then(res => {
         resp.send(res)
     })
-    
+
+})
+
+//获取商家商品
+router.get('/getShopInfo', (req, resp) => {
+    // console.log(req.query);
+    server.getShopInfo(req.query.shop_id).then(res => {
+        resp.send(res)
+    })
+})
+
+//根据id获取商家信息
+router.get('/getShopById', (req, resp) => {
+    // console.log(req.query);
+    server.getShopById(req.query.id).then(res => {
+        console.log(res);
+        resp.send(res)
+    })
 })
 
 module.exports = router
